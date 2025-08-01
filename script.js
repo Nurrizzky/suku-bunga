@@ -1,4 +1,3 @@
-
 // SECTION OF SUKU BUNGA
 let jenisSukuBunga = document.getElementById("jenis-suku-bunga");
 // FORM
@@ -22,15 +21,19 @@ function formatRupiah(e) {
   e.value = formattedValue.replace("Rp", "Rp "); // Menambahkan spasi setelah "Rp"
 }
 
+// Menjalankan Code jika Button (Cek) diklik
 function tampil() {
-  let valueSukuBunga = jenisSukuBunga.value;
+    // Mengambil Value dari select option Jenis Suku bunga
+    let valueSukuBunga = jenisSukuBunga.value;
 
+    // parseFloat digunakan untuk mengkonversi string ke number
     let tabunganAwal = parseFloat(inputUser.value.replace(/\D/g, ""));
     let bunga = parseFloat(sukuBunga.value);
     let waktu = parseFloat(periode.value);
     let optionBunga = waktuBunga.value;
     let optionPeriode = waktuPeriode.value;
 
+    // Cek apakah ada inputan yang kosong
     if (isNaN(tabunganAwal) || isNaN(bunga) || isNaN(waktu) || valueSukuBunga === "" || tabunganAwal < 0 || bunga < 0 || waktu < 0 || optionBunga === "" || optionPeriode === "") {
       setTimeout(() => { 
         modal.classList.remove("opacity-0");
@@ -42,11 +45,15 @@ function tampil() {
       }, 300);
     } 
     else {
+
+      // Menghilangkan modal
       modal.classList.remove("opacity-100");
       modal.classList.add("opacity-0");
+      // Menampilkan hasil / Result
       hasil.classList.remove("hidden");
       hasil.classList.add("block");
 
+      // memberi nilai Default Pada Variabel yang akan di gunakan 
       let rumus = 0;
       let rumusAkhir = 0;
       let besarBunga = 0;
